@@ -1,0 +1,27 @@
+{
+  "name": "shiftgeist.de",
+  "version": "1.0.0",
+  "description": "shiftgeist website",
+  "main": "index.js",
+  "scripts": {
+    "start": "node-sass --watch src/assets/scss/index.scss src/assets/css/index.css"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shiftgeist/shiftgeist.git"
+  },
+  "keywords": [
+    "vuejs",
+    "personal",
+    "website"
+  ],
+  "author": "Felix Hungenberg (shiftgeist)",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/shiftgeist/shiftgeist/issues"
+  },
+  "homepage": "https://github.com/shiftgeist/shiftgeist",
+  "dependencies": {
+    "node-sass": "^4.12.0"
+  }
+}
