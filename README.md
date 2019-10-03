@@ -1,6 +1,8 @@
 # shiftgeist.com
 
-## Project setup
+![preview](https://github.com/shiftgeist/shiftgeist.com/blob/master/.github/preview.png)
+
+## Development
 ```
 npm install
 ```
@@ -24,6 +26,3 @@ npm run test
 ```
 npm run lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
