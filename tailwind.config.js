@@ -1,10 +1,10 @@
 module.exports = {
   theme: {
     fontFamily: {
-      sans: ['Asap', 'sans-serif'],
-      serif: ['Merriweather', 'serif'],
+      sans: ['Roboto', 'sans-serif'],
+      serif: ['Noto Serif', 'serif'],
     },
-    colors: theme => ({
+    colors: {
       black: '#000000',
       white: '#ffffff',
       gray: {
@@ -40,8 +40,12 @@ module.exports = {
         800: '#0663b4',
         900: '#004596',
       },
-    }),
-    extend: {},
+    },
+    extend: {
+      fontSize: {
+        '7xl': '5rem',
+      }
+    },
   },
   variants: {},
   plugins: [],

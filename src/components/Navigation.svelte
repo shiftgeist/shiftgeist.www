@@ -1,16 +1,47 @@
 <script>
-// Hide on scrolldown
-// Show on scrollup
+  import { projects, theme } from "../stores";
+
+  function toggleTheme() {
+    theme.set($theme === "light" ? "dark" : "light");
+  }
 </script>
 
-<nav class="container flex items-center justify-between py-8 mx-auto">
+<nav class="container flex items-center justify-between py-4 mx-auto">
   <a href="/">
-    <img src="assets/icon-white.svg" alt="Logo" class="w-16">
+    <img
+      src={$theme === 'dark' ? 'assets/icon-white.svg' : 'assets/icon.svg'}
+      alt="Logo"
+      class="h-10" />
   </a>
 
-  <ul class="flex text-lg">
-    <li class="ml-4 hover:text-blue-500"><a href="#projects">Projects</a></li>
-    <li class="ml-4 hover:text-blue-500"><a href="#blog">Blog</a></li>
-    <li class="ml-4 hover:text-blue-500"><a href="#about">About</a></li>
-  </ul>
+  <div class="items-center hidden text-lg sm:flex">
+    <a
+      href="https://twitter.com/shiftgeist"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="p-3 hover:text-red-600">
+      Twitter
+    </a>
+    <a
+      href="https://github.com/shiftgeist"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="p-3 hover:text-red-600">
+      GitHub
+    </a>
+    <a
+      href="https://dribbble.com/shiftgeist"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="p-3 hover:text-red-600">
+      Dribbble
+    </a>
+  </div>
+
+  <img
+    alt="Toggle dark theme"
+    class="p-3 cursor-pointer hover:bg-red-600"
+    on:click={toggleTheme}
+    src={$theme === 'dark' ? 'icons/sun-white.svg' : 'icons/moon.svg'} />
+
 </nav>

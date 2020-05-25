@@ -30,4 +30,4 @@ jobs:
     - run: npm install
     - run: npm run build
       env:
-        NODE_ENV: true
+        NODE_ENV: 'production'
