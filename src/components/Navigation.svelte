@@ -1,5 +1,6 @@
 <script>
-  import { projects, theme } from "../stores";
+  import { projects, theme, darkTheme } from "../stores";
+  import { icons } from "feather-icons";
 
   function toggleTheme() {
     theme.set($theme === "light" ? "dark" : "light");
@@ -38,10 +39,11 @@
     </a>
   </div>
 
-  <img
-    alt="Toggle dark theme"
-    class="p-3 cursor-pointer hover:bg-red-600"
-    on:click={toggleTheme}
-    src={$theme === 'dark' ? 'icons/sun-white.svg' : 'icons/moon.svg'} />
-
+  <button class="p-3 cursor-pointer hover:bg-red-600" on:click={toggleTheme}>
+    {#if $darkTheme}
+      {@html icons.sun.toSvg()}
+    {:else}
+      {@html icons.moon.toSvg()}
+    {/if}
+  </button>
 </nav>

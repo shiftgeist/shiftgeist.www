@@ -1,5 +1,5 @@
 <script>
-  import { theme } from "./stores";
+  import { darkTheme } from "./stores";
 
   import Navigation from "./components/Navigation.svelte";
   import Footer from "./components/Footer.svelte";
@@ -7,35 +7,30 @@
   import Projects from "./components/Projects.svelte";
 </script>
 
-<div class={$theme === 'dark' ? 'text-gray-100 bg-gray-900' : ''}>
-  <div class="container px-4 mx-auto lg:px-8">
+<div class={$darkTheme ? 'text-gray-100 bg-gray-900' : ''}>
+  <div
+    class="container flex flex-col justify-between min-h-screen px-4 mx-auto lg:px-8">
     <Navigation />
 
     <header class="my-40 text-5xl lg:my-48 md:text-6xl lg:text-6xl">
       <h1 class="inline font-serif text-red-600">
         Hi, I'm
-        <s>Felix</s>
+        <s title="Felix Hungenberg">Felix</s>
         shiftgeist.
       </h1>
       <h2 class="inline font-serif">
         Breaking the barrier of design and code.
       </h2>
-      <a
+      <!-- <a
         href="#main"
         class="block mt-56 text-2xl font-light text-gray-600 hover:text-blue-500">
         See Work Projects
-      </a>
+      </a> -->
     </header>
 
-    <main id="main">
-      <!-- <div class="mb-32 text-gray-500">You shall scroll down</div> -->
+    <!-- <main id="main">
+      <Projects id="projects" />
 
-      <!-- #projects -->
-      <Projects />
-
-      <!-- #blog -->
-
-      <!-- About -->
       <section>
         <h2 class="mb-1 font-serif" id="about">About</h2>
         <p class="mb-6">Es war einmal...</p>
@@ -44,7 +39,7 @@
           <h3 class="mb-1 font-serif" id="contact">Get In Touch</h3>
           <p class="mb-2">
             You can contact me via
-            <a href="mailto:shiftgeist@gmail.com" class="underline">email</a>
+            <a href="mailto:hi@shiftgeist.com" class="underline">email</a>
             , or reach out thought
             <a
               href="https://twitter.com/shiftgeist"
@@ -100,7 +95,7 @@
           </p>
         </div>
       </section>
-    </main>
+    </main> -->
 
     <Footer />
   </div>
