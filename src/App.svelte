@@ -5,6 +5,9 @@
   import Footer from "./components/Footer.svelte";
 
   import Projects from "./components/Projects.svelte";
+
+  let felixStrike = true;
+  let barrier = true;
 </script>
 
 <div class={$darkTheme ? 'text-gray-100 bg-gray-900' : ''}>
@@ -12,14 +15,26 @@
     class="container flex flex-col justify-between min-h-screen px-4 mx-auto lg:px-8">
     <Navigation />
 
-    <header class="my-40 text-5xl lg:my-48 md:text-6xl lg:text-6xl">
-      <h1 class="inline font-serif text-red-600">
+    <header
+      class="my-16 text-4xl text-center sm:text-5xl lg:text-6xl md:text-left">
+      <h1 class="font-serif text-red-600 md:inline">
         Hi, I'm
-        <s title="Felix Hungenberg">Felix</s>
-        shiftgeist.
+        <span
+          title="Felix Hungenberg"
+          on:mouseenter={() => (felixStrike = false)}
+          class:line-through={felixStrike}>
+          Felix
+        </span>
+        <span
+          on:mouseenter={() => (felixStrike = true)}
+          class:line-through={!felixStrike}>
+          shiftgeist.
+        </span>
       </h1>
-      <h2 class="inline font-serif">
-        Breaking the barrier of design and code.
+      <h2 class="font-serif md:inline">
+        <span on:click={() => (barrier = !barrier)}>Breaking the barrier</span>
+        of
+        {#if barrier}design and code.{:else}designcode.{/if}
       </h2>
       <!-- <a
         href="#main"

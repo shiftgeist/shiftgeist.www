@@ -6,11 +6,14 @@
   let legalOpen = false;
 </script>
 
-<footer class="flex items-center justify-between py-8 mt-16 text-gray-500">
-  <span>©{new Date().getFullYear()} Felix Hungenberg</span>
+<footer
+  class="flex flex-col-reverse py-4 mt-16 text-gray-500 sm:items-center sm:justify-between sm:flex-row">
+  <span class="inline-block mt-4 sm:mt-0">
+    ©{new Date().getFullYear()} Felix Hungenberg
+  </span>
 
-  <div class="-m-2 text-lg">
-    <span class="relative">
+  <div class="flex justify-between -m-2 text-lg sm:block">
+    <span class="relative inline-flex items-center">
       <button
         class="p-2 mr-4 pointer"
         on:click={() => (legalOpen = !legalOpen)}>
@@ -18,8 +21,8 @@
       </button>
       {#if legalOpen}
         <div
-          class="absolute mb-12 rounded shadow-lg left-1/2 bottom-0 p-4 pr-20
-          transform -translate-x-1/2 modal {$darkTheme ? 'bg-gray-800 text-white' : ' bg-white text-black'}">
+          class="absolute mb-20 sm:mb-12 rounded shadow-lg sm:left-1/2 bottom-0
+          p-4 pr-20 sm:transform sm:-translate-x-1/2 modal {$darkTheme ? 'bg-gray-800 text-white' : ' bg-white text-black'}">
           <div class="flex justify-between">
             <h1 class="mb-2 font-serif text-xl">Impressum</h1>
             <button
@@ -35,35 +38,37 @@
       {/if}
     </span>
 
-    <FooterItem link="mailto:hi@shiftgeist.com" name="Mail">
-      <span>M</span>
-      <span slot="entered">
-        {@html icons.mail.toSvg({ class: 'inline' })}
-      </span>
-    </FooterItem>
-    <FooterItem link="https://twitter.com/shiftgeist" name="Tweets">
-      <span>T</span>
-      <span slot="entered">
-        {@html icons.twitter.toSvg({ class: 'inline' })}
-      </span>
-    </FooterItem>
-    <FooterItem link="https://linkedin.com/in/fhungenberg" name="Connect">
-      <span>L</span>
-      <span slot="entered">
-        {@html icons.linkedin.toSvg({ class: 'inline' })}
-      </span>
-    </FooterItem>
-    <FooterItem link="https://dribbble.com/shiftgeist" name="Dribbble">
-      <span>D</span>
-      <span slot="entered">
-        {@html icons.play.toSvg({ class: 'inline' })}
-      </span>
-    </FooterItem>
-    <FooterItem link="https://github.com/shiftgeist" name="GitHub">
-      <span>G</span>
-      <span slot="entered">
-        {@html icons.github.toSvg({ class: 'inline' })}
-      </span>
-    </FooterItem>
+    <span>
+      <FooterItem link="mailto:hi@shiftgeist.com" name="Mail">
+        <span>M</span>
+        <span slot="entered">
+          {@html icons.mail.toSvg({ class: 'inline' })}
+        </span>
+      </FooterItem>
+      <FooterItem link="https://twitter.com/shiftgeist" name="Tweets">
+        <span>T</span>
+        <span slot="entered">
+          {@html icons.twitter.toSvg({ class: 'inline' })}
+        </span>
+      </FooterItem>
+      <FooterItem link="https://linkedin.com/in/fhungenberg" name="Connect">
+        <span>L</span>
+        <span slot="entered">
+          {@html icons.linkedin.toSvg({ class: 'inline' })}
+        </span>
+      </FooterItem>
+      <FooterItem link="https://dribbble.com/shiftgeist" name="Dribbble">
+        <span>D</span>
+        <span slot="entered">
+          {@html icons.play.toSvg({ class: 'inline' })}
+        </span>
+      </FooterItem>
+      <FooterItem link="https://github.com/shiftgeist" name="GitHub">
+        <span>G</span>
+        <span slot="entered">
+          {@html icons.github.toSvg({ class: 'inline' })}
+        </span>
+      </FooterItem>
+    </span>
   </div>
 </footer>
