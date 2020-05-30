@@ -1,6 +1,7 @@
 <script>
-  import { projects, theme, darkTheme } from "../stores";
   import { icons } from "feather-icons";
+  import { projects, theme, darkTheme } from "../stores";
+  import Logo from "./Logo.svelte";
 
   function toggleTheme() {
     theme.set($theme === "light" ? "dark" : "light");
@@ -8,12 +9,7 @@
 </script>
 
 <nav class="container flex items-center justify-between py-4 mx-auto">
-  <a href="/">
-    <img
-      src={$theme === 'dark' ? 'assets/icon-white.svg' : 'assets/icon.svg'}
-      alt="Logo"
-      class="h-10" />
-  </a>
+  <Logo />
 
   <div class="items-center hidden text-lg sm:flex">
     <a
