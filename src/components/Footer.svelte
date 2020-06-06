@@ -7,12 +7,12 @@
 </script>
 
 <footer
-  class="flex flex-col-reverse py-4 mt-16 text-gray-500 sm:items-center sm:justify-between sm:flex-row">
+  class="flex flex-col-reverse py-4 mt-16 text-lg text-gray-500 sm:items-center sm:justify-between sm:flex-row">
   <span class="inline-block mt-4 sm:mt-0">
     ©{new Date().getFullYear()} Felix Hungenberg
   </span>
 
-  <div class="flex justify-between -m-2 text-lg sm:block">
+  <div class="flex justify-between -m-2 sm:block">
     <span class="relative inline-flex items-center">
       <button
         class="p-2 mr-4 pointer"
