@@ -57,7 +57,13 @@ export default {
 
     // If we're building for production (npm run build
     // instead of npm run dev), minify
-    production && terser(),
+    production &&
+      terser({
+        output: {
+          comments: false,
+          ie8: false,
+        },
+      }),
 
     replace({
       __apiBase__: process.env.API_BASE,
