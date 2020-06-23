@@ -6,6 +6,11 @@
   let bucketFilled = true;
   let bucketAccent = colors[0];
 
+  function refillBucket() {
+    bucketFilled = false;
+    setTimeout(fillBucket, 800);
+  }
+
   function fillBucket() {
     bucketFilled = true;
     const nextColor = colors.indexOf(bucketAccent) + 1;
@@ -13,10 +18,7 @@
   }
 </script>
 
-<a
-  href="/"
-  on:mouseenter={() => (bucketFilled = false)}
-  on:mouseleave={fillBucket}>
+<div on:click={refillBucket}>
   <svg
     class="w-auto h-10"
     width="192"
@@ -130,4 +132,4 @@
     {/if}
   </svg>
 
-</a>
+</div>
