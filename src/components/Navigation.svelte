@@ -1,6 +1,7 @@
 <script>
-  import { icons } from "feather-icons";
-  import { projects, theme, darkTheme } from "../stores";
+  import { SunIcon, MoonIcon } from "svelte-feather-icons";
+
+  import { theme, darkTheme } from "../stores";
   import Logo from "./Logo.svelte";
 
   function toggleTheme() {
@@ -37,9 +38,9 @@
 
   <button class="p-3 cursor-pointer hover:bg-red-600" on:click={toggleTheme}>
     {#if $darkTheme}
-      {@html icons.sun.toSvg()}
+      <SunIcon size="1.5x" />
     {:else}
-      {@html icons.moon.toSvg()}
+      <MoonIcon size="1.5x" />
     {/if}
   </button>
 </nav>
