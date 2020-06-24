@@ -1,4 +1,5 @@
 const production = !process.env.ROLLUP_WATCH;
+import pgk from "./package.json";
 
 require("dotenv").config(".env");
 import svelte from "rollup-plugin-svelte";
@@ -23,6 +24,12 @@ export default {
       plugins: [
         require("tailwindcss"),
         require("autoprefixer"),
+        ...[
+          production &&
+            require("@fullhuman/postcss-purgecss")({
+              content: ["./public/**/*.html", "./src/**/*.svelte"],
+            }),
+        ],
         require("cssnano"),
       ],
     }),
@@ -66,7 +73,7 @@ export default {
       }),
 
     replace({
-      __apiBase__: process.env.API_BASE,
+      __version__: pgk.version,
     }),
   ],
   watch: {

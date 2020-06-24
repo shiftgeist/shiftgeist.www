@@ -54,8 +54,6 @@ module.exports = {
   variants: {},
   plugins: [],
   purge: {
-    enable: true,
-    content: ["./public/**/*.html", "./src/**/*.svelte"],
-    options: {},
+    enable: false,
   },
 };

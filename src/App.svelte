@@ -1,116 +1,67 @@
 <script>
-  import { darkTheme } from "./stores";
+  import { scrollto } from "svelte-scrollto";
+  import { MousePointerIcon } from "svelte-feather-icons";
 
+  import { darkTheme } from "./stores";
   import Navigation from "./components/Navigation.svelte";
   import Footer from "./components/Footer.svelte";
+  import WebsiteTech from "./components/WebsiteTech.svelte";
 
-  import Projects from "./components/Projects.svelte";
-
-  let felixStrike = true;
+  let strike = 0;
   let barrier = true;
+  let y = 0;
 </script>
 
+<svelte:head>
+  <meta name="version" comment="__version__" />
+</svelte:head>
+
+<svelte:window bind:scrollY={y} />
+
 <div class={$darkTheme ? 'text-gray-100 bg-gray-900' : ''}>
-  <div
-    class="container flex flex-col justify-between min-h-screen px-4 mx-auto lg:px-8">
-    <Navigation />
+  <div class="container px-4 mx-auto lg:px-8">
 
-    <header
-      class="my-16 text-4xl text-center sm:text-5xl lg:text-6xl md:text-left">
-      <h1 class="font-serif text-red-600 md:inline">
-        Hi, I'm
-        <span
-          title="Felix Hungenberg"
-          on:mouseenter={() => (felixStrike = false)}
-          class:line-through={felixStrike}>
-          Felix
-        </span>
-        <span
-          on:mouseenter={() => (felixStrike = true)}
-          class:line-through={!felixStrike}>
-          shiftgeist.
-        </span>
-      </h1>
-      <h2 class="font-serif md:inline">
-        <span on:click={() => (barrier = !barrier)}>Breaking the barrier</span>
-        of
-        {#if barrier}design and code.{:else}designcode.{/if}
-      </h2>
-      <!-- <a
-        href="#main"
-        class="block mt-56 text-2xl font-light text-gray-600 hover:text-blue-500">
-        See Work Projects
-      </a> -->
-    </header>
+    <div class="flex flex-col min-h-screen">
+      <Navigation />
 
-    <!-- <main id="main">
-      <Projects id="projects" />
-
-      <section>
-        <h2 class="mb-1 font-serif" id="about">About</h2>
-        <p class="mb-6">Es war einmal...</p>
-
-        <div class="mb-8">
-          <h3 class="mb-1 font-serif" id="contact">Get In Touch</h3>
-          <p class="mb-2">
-            You can contact me via
-            <a href="mailto:hi@shiftgeist.com" class="underline">email</a>
-            , or reach out thought
-            <a
-              href="https://twitter.com/shiftgeist"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="underline">
-              Twitter
-            </a>
-            .
-          </p>
-          <p class="mb-2">
-            <a
-              href="https://linkedin.com/in/fhungenberg/"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="mr-4 underline">
-              Linkedin
-            </a>
-            <a
-              href="https://dribbble.com/shiftgeist"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="mr-4 underline">
-              Dribbble
-            </a>
-            <a
-              href="https://github.com/shiftgeist"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="mr-4 underline">
-              Github
-            </a>
-          </p>
+      <header class="flex items-center flex-grow my-16 lg:mb-32">
+        <div class="text-4xl text-center sm:text-5xl lg:text-6xl md:text-left">
+          <h1 class="font-serif text-red-600 md:inline">
+            Hi, I'm
+            <span
+              title="Felix Hungenberg"
+              on:mouseenter={() => (strike = 1)}
+              class:line-through={strike !== 1}>
+              Felix
+            </span>
+            <span
+              on:mouseenter={() => (strike = 0)}
+              class:line-through={strike !== 0}>
+              shiftgeist.
+            </span>
+          </h1>
+          <h2 class="font-serif md:inline">
+            <span on:click={() => (barrier = !barrier)}>
+              Breaking the barrier
+            </span>
+            of
+            {#if barrier}design and code.{:else}designcode.{/if}
+          </h2>
         </div>
+      </header>
+      <div class="flex justify-center mb-8">
+        <span
+          use:scrollto={'#main'}
+          class="cursor-pointer"
+          style="transform: rotate({Math.min(y * 0.35 - 135, 45)}deg); opacity: {1 - y * 0.001};">
+          <MousePointerIcon size="1.5x" />
+        </span>
+      </div>
+    </div>
 
-        <div class="mb-8">
-          <h3 class="mb-1 font-serif" id="stack">Stack</h3>
-          <p class="mb-2">
-            This website is handcrafted with the unconventional svelte. It uses
-            both Roboto and Noto Serif typefaces and an awesome icon library
-            called
-            <a
-              href="https://feathericons.com/"
-              target="_blank"
-              rel="noopener noreferrer">
-              feather
-            </a>
-            icons.
-          </p>
-          <p class="mb-2">
-            It gets its flair thought tailwind and its speed from the essential
-            purgecss.
-          </p>
-        </div>
-      </section>
-    </main> -->
+    <main id="main">
+      <WebsiteTech />
+    </main>
 
     <Footer />
   </div>
