@@ -14,7 +14,7 @@
 <div
   class="rounded shadow-lg p-4 pr-20 {$darkTheme ? 'bg-gray-800 text-white' : ' bg-white text-black'}">
   <div class="flex justify-between">
-    <h1 class="mb-2 font-serif text-xl font-semibold">Impressum</h1>
+    <h1 class="mb-2 font-serif font-semibold">Impressum</h1>
     <button on:click={close} class="absolute top-0 right-0 p-4">
       <XIcon size="1.5x" />
     </button>
