@@ -1,4 +1,10 @@
+const dev = process.env.ROLLUP_WATCH;
+
 module.exports = {
+  purge: {
+    enabled: !dev,
+    content: ["./src/**/*.svelte"],
+  },
   theme: {
     fontFamily: {
       sans: ["Roboto", "sans-serif"],
@@ -55,7 +61,4 @@ module.exports = {
     display: ["responsive", "hover", "focus", "group-hover", "group-focus"],
   },
   plugins: [],
-  purge: {
-    enable: false,
-  },
 };
