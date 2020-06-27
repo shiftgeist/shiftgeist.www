@@ -12,7 +12,7 @@
 <nav class="container flex items-center justify-between py-4 mx-auto">
   <Logo />
 
-  <div class="items-center hidden text-lg sm:flex">
+  <div class="items-center hidden sm:flex">
     <a
       href="https://twitter.com/shiftgeist"
       target="_blank"
