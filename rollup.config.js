@@ -1,4 +1,4 @@
-const production = !process.env.ROLLUP_WATCH;
+const dev = process.env.ROLLUP_WATCH;
 import pgk from "./package.json";
 
 require("dotenv").config(".env");
@@ -13,7 +13,6 @@ import postcss from "rollup-plugin-postcss";
 export default {
   input: "src/main.js",
   output: {
-    sourcemap: !production,
     format: "iife",
     name: "app",
     file: "public/build/bundle.js",
@@ -24,18 +23,14 @@ export default {
       plugins: [
         require("tailwindcss"),
         require("autoprefixer"),
-        ...[
-          production &&
-            require("@fullhuman/postcss-purgecss")({
-              content: ["./public/**/*.html", "./src/**/*.svelte"],
-            }),
-        ],
-        require("postcss-csso"),
+        require("postcss-csso")({
+          comments: false,
+        }),
       ],
     }),
     svelte({
       // enable run-time checks when not in production
-      dev: !production,
+      dev,
       // we'll extract any component CSS out into
       // a separate file - better for performance
       css: (css) => {
@@ -56,15 +51,15 @@ export default {
 
     // In dev mode, call `npm run start` once
     // the bundle has been generated
-    !production && serve(),
+    dev && serve(),
 
     // Watch the `public` directory and refresh the
     // browser on changes when not in production
-    !production && livereload("public"),
+    dev && livereload("public"),
 
     // If we're building for production (npm run build
     // instead of npm run dev), minify
-    production &&
+    !dev &&
       terser({
         output: {
           comments: false,
