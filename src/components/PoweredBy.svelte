@@ -35,9 +35,9 @@
       target="_blank"
       title={slug + ' ' + name}>
       <img
-        src="assets/tools/{name}.svg"
         alt={name}
-        class="object-contain object-center" />
+        class="object-contain object-center lazyload"
+        data-src="assets/tools/{name}.svg" />
     </a>
   {/each}
 </div>
