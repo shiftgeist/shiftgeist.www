@@ -4,7 +4,7 @@
   import Footer from "./components/Footer.svelte";
   import Header from "./components/Header.svelte";
 
-  let h;
+  let bodyH;
 </script>
 
 <svelte:head>
@@ -13,12 +13,12 @@
 
 <div
   class={$darkTheme ? 'text-gray-100 bg-gray-900' : ''}
-  bind:clientHeight={h}>
+  bind:clientHeight={bodyH}>
   <div class="container px-4 mx-auto lg:px-8">
 
     <div class="flex flex-col min-h-screen">
       <Navigation />
-      <Header {h} />
+      <Header {bodyH} />
     </div>
 
     <main id="main" />
