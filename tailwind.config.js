@@ -51,7 +51,9 @@ module.exports = {
       },
     },
   },
-  variants: {},
+  variants: {
+    display: ["responsive", "hover", "focus", "group-hover", "group-focus"],
+  },
   plugins: [],
   purge: {
     enable: false,
