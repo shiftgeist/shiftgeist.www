@@ -3,27 +3,22 @@
     {
       name: "svelte",
       url: "http://github.com/sveltejs/svelte",
-      slug: "made with",
+      slug: "super charged by",
     },
     {
       name: "tailwindcss",
       url: "http://github.com/tailwindcss/tailwindcss",
-      slug: "made with",
+      slug: "styled with",
     },
     {
       name: "feather",
       url: "http://github.com/feathericons/feather",
-      slug: "made with",
-    },
-    {
-      name: "ticktick",
-      url: "https://ticktick.com/zFVY6?u=107dac9d5385480a8e238d6a51e1f0c2",
-      slug: "planed with",
+      slug: "icons from",
     },
     {
       name: "hosting.de",
       url: "https://hosting.de/?partnerId=O2tr9S2l2JBYwWpmAFXH",
-      slug: "hosted by",
+      slug: "hosted at",
     },
   ];
 </script>
