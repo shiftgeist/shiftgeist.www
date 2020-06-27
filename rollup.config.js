@@ -30,7 +30,7 @@ export default {
               content: ["./public/**/*.html", "./src/**/*.svelte"],
             }),
         ],
-        require("cssnano"),
+        require("postcss-csso"),
       ],
     }),
     svelte({
