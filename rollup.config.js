@@ -1,14 +1,26 @@
-const dev = process.env.ROLLUP_WATCH;
-import pgk from "./package.json";
-
-require("dotenv").config(".env");
-import svelte from "rollup-plugin-svelte";
-import resolve from "@rollup/plugin-node-resolve";
+import boxen from "boxen";
 import commonjs from "@rollup/plugin-commonjs";
-import replace from "@rollup/plugin-replace";
+import { config } from "dotenv";
+import copy from "rollup-plugin-copy";
+import image from "svelte-image";
 import livereload from "rollup-plugin-livereload";
-import { terser } from "rollup-plugin-terser";
+import { mdsvex } from "mdsvex";
+import pgk from "./package.json";
 import postcss from "rollup-plugin-postcss";
+import replace from "@rollup/plugin-replace";
+import resolve from "@rollup/plugin-node-resolve";
+import svelte from "rollup-plugin-svelte";
+import { terser } from "rollup-plugin-terser";
+
+config();
+
+const dev = process.env.ROLLUP_WATCH === "true";
+console.log(
+  boxen(`Mode: ${dev ? "Develop" : "Production"}`, {
+    padding: 1,
+    borderColor: dev ? "cyan" : "red",
+  })
+);
 
 export default {
   input: "src/main.js",
@@ -16,6 +28,7 @@ export default {
     format: "iife",
     name: "app",
     file: "public/build/bundle.js",
+    sourcemap: dev,
   },
   plugins: [
     postcss({
@@ -28,14 +41,21 @@ export default {
         }),
       ],
     }),
+
     svelte({
-      // enable run-time checks when not in production
       dev,
-      // we'll extract any component CSS out into
-      // a separate file - better for performance
+      extensions: [".svelte", ".svx"],
       css: (css) => {
         css.write("public/build/bundle.css");
       },
+      preprocess: {
+        ...mdsvex(),
+        ...image(),
+      },
+    }),
+
+    copy({
+      targets: [{ src: "static/g", dest: "public" }],
     }),
 
     // If you have external dependencies installed from
@@ -69,6 +89,7 @@ export default {
 
     replace({
       __version__: pgk.version,
+      __themeColor__: "#fff",
     }),
   ],
   watch: {
