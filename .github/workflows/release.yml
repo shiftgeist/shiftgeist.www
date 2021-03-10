@@ -5,19 +5,16 @@ on:
     tags:
       - "*"
 
-env:
-  node_version: 14
-
 jobs:
   release:
-    name: Release with Node ${{ env.node_version }}
+    name: Release
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2.3.3
       - name: Use Node (latest)
         uses: actions/setup-node@v2.1.5
         with:
-          node_version: ${{ env.node_version }}
+          node_version: 14
       # - name: Update NPM-Version
       #   run: npm version from-git
       - name: Install
