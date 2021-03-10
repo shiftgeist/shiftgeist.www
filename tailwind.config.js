@@ -2,8 +2,8 @@ const dev = process.env.ROLLUP_WATCH;
 const Matercolor = require("matercolors");
 
 const matercolorTailwind = (color) => {
-  const { palette } = new Matercolor(color);
-  const primary = palette().primary;
+  const mcolor = new Matercolor(color);
+  const primary = mcolor.makePalette("primary");
   let colors = {};
 
   for (const c of Object.keys(primary)) {
