@@ -1,8 +1,2 @@
-/node_modules/
-/public/build/
-/public/g/
-
-.DS_Store
-
-.env*
-!.env.example
+/node_modules
+/public/build
