@@ -42,9 +42,7 @@ export default {
       },
       compilerOptions: {
         dev: !production,
-        css: (css) => {
-          css.write("public/build/bundle.css");
-        },
+        css: false,
       },
     }),
 
