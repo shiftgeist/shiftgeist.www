@@ -7,9 +7,9 @@ export const color = writable(colors[0]);
 export const next = () => {
   const temp = colors.indexOf(color);
 
-  console.log(temp);
+  // console.log(temp);
 };
 
 color.subscribe((val) => {
-  console.log(val);
+  // console.log(val);
 });
