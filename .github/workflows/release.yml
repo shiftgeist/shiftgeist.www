@@ -29,4 +29,4 @@ jobs:
           WS_HOST: ${{ secrets.WS_HOST }}
           WS_HOME_DIR: "html/shiftgeist.com"
           WS_PORT: 2244
-          WS_SOURCE: "../public"
+          WS_SOURCE: "public/"
