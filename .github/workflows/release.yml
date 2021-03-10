@@ -1,0 +1,35 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "*"
+
+env:
+  node_version: 14
+
+jobs:
+  release:
+    name: Release with Node ${{ env.node_version }}
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2.3.3
+      - name: Use Node (latest)
+        uses: actions/setup-node@v2.1.5
+        with:
+          node_version: ${{ env.node_version }}
+      # - name: Update NPM-Version
+      #   run: npm version from-git
+      - name: Install
+        run: npm ci
+      - name: Build
+        run: npm run build
+      - name: Publish
+        run: sh scripts/publish.sh
+        env:
+          WS_HOST: ${{ secrets.WS_HOST }}
+          WS_DIR: ${{ secrets.WS_DIR }}
+          WS_USER: ${{ secrets.WS_USER }}
+          WS_PASS: ${{ secrets.WS_PASS }}
+          WS_PORT: 2244
+          WS_SOURCE: "../public"
