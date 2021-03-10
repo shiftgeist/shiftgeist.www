@@ -21,7 +21,6 @@
     "mdsvex": "^0.8.9",
     "postcss-csso": "^5.0.0",
     "rollup": "^2.41.0",
-    "rollup-plugin-copy": "^3.4.0",
     "rollup-plugin-livereload": "^2.0.0",
     "rollup-plugin-postcss": "^4.0.0",
     "rollup-plugin-svelte": "^7.1.0",

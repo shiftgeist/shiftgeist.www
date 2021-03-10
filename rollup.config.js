@@ -1,7 +1,5 @@
-import boxen from "boxen";
 import commonjs from "@rollup/plugin-commonjs";
 import { config } from "dotenv";
-import copy from "rollup-plugin-copy";
 import image from "svelte-image";
 import livereload from "rollup-plugin-livereload";
 import { mdsvex } from "mdsvex";
@@ -14,13 +12,7 @@ import { terser } from "rollup-plugin-terser";
 
 config();
 
-const dev = process.env.ROLLUP_WATCH === "true";
-console.log(
-  boxen(`Mode: ${dev ? "Develop" : "Production"}`, {
-    padding: 1,
-    borderColor: dev ? "cyan" : "red",
-  })
-);
+const production = !process.env.ROLLUP_WATCH;
 
 export default {
   input: "src/main.js",
@@ -28,7 +20,7 @@ export default {
     format: "iife",
     name: "app",
     file: "public/build/bundle.js",
-    sourcemap: dev,
+    sourcemap: !production,
   },
   plugins: [
     postcss({
@@ -43,19 +35,17 @@ export default {
     }),
 
     svelte({
-      dev,
       extensions: [".svelte", ".svx"],
-      css: (css) => {
-        css.write("public/build/bundle.css");
-      },
       preprocess: {
         ...mdsvex(),
         ...image(),
       },
-    }),
-
-    copy({
-      targets: [{ src: "static/g", dest: "public" }],
+      compilerOptions: {
+        dev: !production,
+        css: (css) => {
+          css.write("public/build/bundle.css");
+        },
+      },
     }),
 
     // If you have external dependencies installed from
@@ -71,15 +61,15 @@ export default {
 
     // In dev mode, call `npm run start` once
     // the bundle has been generated
-    dev && serve(),
+    !production && serve(),
 
     // Watch the `public` directory and refresh the
     // browser on changes when not in production
-    dev && livereload("public"),
+    !production && livereload("public"),
 
     // If we're building for production (npm run build
     // instead of npm run dev), minify
-    !dev &&
+    production &&
       terser({
         output: {
           comments: false,
@@ -88,28 +78,36 @@ export default {
       }),
 
     replace({
-      __version__: pgk.version,
-      __themeColor__: "#fff",
+      preventAssignment: true,
+      values: {
+        __version__: pgk.version,
+        __themeColor__: "#fff",
+      },
     }),
   ],
-  watch: {
-    clearScreen: false,
-  },
 };
 
 function serve() {
-  let started = false;
+  let server;
+
+  function toExit() {
+    if (server) server.kill(0);
+  }
 
   return {
     writeBundle() {
-      if (!started) {
-        started = true;
-
-        require("child_process").spawn("npm", ["run", "start", "--", "--dev"], {
+      if (server) return;
+      server = require("child_process").spawn(
+        "npm",
+        ["run", "serve", "--", "--dev"],
+        {
           stdio: ["ignore", "inherit", "inherit"],
           shell: true,
-        });
-      }
+        }
+      );
+
+      process.on("SIGTERM", toExit);
+      process.on("exit", toExit);
     },
   };
 }

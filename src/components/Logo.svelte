@@ -1,10 +1,9 @@
 <script>
   import { fade } from "svelte/transition";
-  import { darkTheme } from "../stores";
+  import { dark } from "../stores/theme";
+  import { color, next } from '../stores/color'
 
-  const colors = ["#E53935", "#1E92E6"];
   let bucketFilled = true;
-  let bucketAccent = colors[0];
 
   function refillBucket() {
     bucketFilled = false;
@@ -13,8 +12,7 @@
 
   function fillBucket() {
     bucketFilled = true;
-    const nextColor = colors.indexOf(bucketAccent) + 1;
-    bucketAccent = colors[colors.length === nextColor ? 0 : nextColor];
+    next()
   }
 </script>
 
@@ -39,7 +37,7 @@
       15.1833 8.78778 18.7869 5.67557C22.4724 2.48146 28.7378 0.720607 37.583
       0.393005L37.7058 11.6952C33.3651 12.0228 30.3758 13.0875 28.7378
       14.8893C27.1817 16.6912 26.4036 19.3529 26.4036 22.8746Z"
-      fill={$darkTheme ? 'white' : 'black'} />
+      fill={$dark ? 'white' : 'black'} />
     <path
       d="M165.596 87.1253L164.736 71.769C164.736 66.6093 165.596 62.8829 167.316
       60.5897C169.036 58.2964 172.64 56.4127 178.127 54.9385C172.722 53.5462
@@ -53,14 +51,14 @@
       88.1081C178.618 95.8067 176.817 101.212 173.213 104.324C169.527 107.518
       163.262 109.279 154.417 109.607L154.294 98.3047C158.635 97.9771 161.624
       96.9124 163.262 95.1106C164.818 93.3088 165.596 90.647 165.596 87.1253Z"
-      fill={$darkTheme ? 'white' : 'black'} />
+      fill={$dark ? 'white' : 'black'} />
     {#if bucketFilled}
       <path
         transition:fade
         d="M123.728 58.393L95.4378 86.3147C89.9283 91.7524 80.9958 91.7524
         75.4863 86.3147L58.8601 69.9051C55.6752 66.7617 54.3314 62.4892 54.8288
         58.393H123.728Z"
-        fill={bucketAccent}
+        fill={$color}
         id="paintInBucket" />
     {/if}
     {#if bucketFilled}
@@ -79,7 +77,7 @@
         52.0682L96.2789 91.0683C89.8171 97.53 79.3406 97.53 72.8788
         91.0683L53.3788 71.5682C46.917 65.1065 46.917 54.6299 53.3788
         48.1682L92.3789 9.16808Z"
-        stroke={$darkTheme ? 'white' : 'black'}
+        stroke={$dark ? 'white' : 'black'}
         stroke-width="22.0618"
         mask="url(#airInBucket)" />
       <rect
@@ -90,7 +88,7 @@
         height="11.0309"
         rx="5.51545"
         transform="rotate(45 59.2261 7.21808)"
-        fill={$darkTheme ? 'white' : 'black'} />
+        fill={$dark ? 'white' : 'black'} />
     {:else}
       <mask transition:fade id="airInBucket" fill="white">
         <path
@@ -107,7 +105,7 @@
         92.9983L60.9457 78.7233C52.1188 76.3581 46.8805 67.2852 49.2457
         58.4583L56.3832 31.8207C58.7483 22.9938 67.8213 17.7555 76.6482
         20.1207L129.923 34.3957Z"
-        stroke={$darkTheme ? 'white' : 'black'}
+        stroke={$dark ? 'white' : 'black'}
         stroke-width="22.0618"
         mask="url(#airInBucket)" />
       <rect
@@ -118,7 +116,7 @@
         height="11.0309"
         rx="5.51545"
         transform="rotate(105 114.906 4.58255)"
-        fill={$darkTheme ? 'white' : 'black'} />
+        fill={$dark ? 'white' : 'black'} />
     {/if}
 
     {#if bucketFilled}
@@ -128,7 +126,7 @@
         96.5733C128.814 96.5733 123.876 91.6346 123.876 85.5424C123.876 77.2692
         134.907 62.1017 134.907 62.1017C134.907 62.1017 145.938 77.2692 145.938
         85.5424Z"
-        fill={bucketAccent} />
+        fill={$color} />
     {/if}
   </svg>
 
