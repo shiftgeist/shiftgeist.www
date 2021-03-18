@@ -6,35 +6,29 @@
     "url": "https://github.com/shiftgeist/shiftgeist.com"
   },
   "scripts": {
-    "start": "rollup -c -w",
-    "build": "rollup -c",
-    "serve": "sirv public --port=8080"
+    "start": "svelte-kit dev --port 8080",
+    "build": "svelte-kit build",
+    "serve": "svelte-kit start"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "17.1.0",
-    "@rollup/plugin-node-resolve": "^11.2.0",
-    "@rollup/plugin-replace": "^2.4.1",
-    "autoprefixer": "^10.2.5",
-    "dotenv": "^8.2.0",
+    "@sveltejs/adapter-static": "next",
+    "@sveltejs/kit": "next",
+    "feather-helper": "^2.0.2",
     "lazysizes": "^5.3.0",
-    "matercolors": "^2.2.10",
-    "mdsvex": "^0.8.9",
-    "postcss-csso": "^5.0.0",
-    "rollup": "^2.41.0",
-    "rollup-plugin-livereload": "^2.0.0",
-    "rollup-plugin-postcss": "^4.0.0",
-    "rollup-plugin-svelte": "^7.1.0",
-    "rollup-plugin-terser": "^7.0.2",
+    "rollup": "^2.41.5",
     "svelte": "^3.35.0",
     "svelte-feather-icons": "^3.3.0",
-    "svelte-image": "^0.1.9",
-    "svelte-routing": "^1.5.0",
-    "svelte-scrollto": "^0.2.0",
-    "svelte-select": "^3.17.0",
-    "tailwindcss": "2.0.3"
+    "svelte-preprocess": "^4.6.9",
+    "svelte-windicss-preprocess": "^3.0.0-beta.23",
+    "tslib": "^2.1.0",
+    "typescript": "^4.2.3",
+    "vite": "^2.1.2",
+    "vite-plugin-windicss": "^0.9.2",
+    "windicss": "^2.5.1"
   },
-  "dependencies": {
-    "sirv-cli": "^1.0.11"
+  "type": "commonjs",
+  "engines": {
+    "node": ">= 12.17.0"
   },
   "browserslist": [
     "> 1%",
