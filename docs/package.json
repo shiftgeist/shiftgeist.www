@@ -1,0 +1,21 @@
+{
+  "name": "shiftgeist.com-storybook",
+  "version": "1.0.0",
+  "description": "",
+  "private": "true",
+  "scripts": {
+    "start": "start-storybook -p 6006",
+    "build": "build-storybook"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.13.10",
+    "@storybook/addon-actions": "6.2.0-rc.2",
+    "@storybook/addon-essentials": "^6.2.0-rc.2",
+    "@storybook/addon-links": "^6.2.0-rc.2",
+    "@storybook/addon-svelte-csf": "^1.0.0",
+    "@storybook/svelte": "^6.2.0-rc.2",
+    "babel-loader": "^8.2.2",
+    "svelte": "^3.35.0",
+    "svelte-loader": "^3.0.0"
+  }
+}
