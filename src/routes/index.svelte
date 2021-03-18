@@ -1,48 +1,26 @@
-<script lang="ts">
-  import Counter from "$lib/Counter.svelte";
+<script>
+  import Navigation from "../lib/Navigation.svelte";
+  import Footer from "../lib/Footer.svelte";
+  import Header from "../lib/Header.svelte";
+
+  let bodyH;
 </script>
 
-<main class="bg-gray-200">
-  <h1>Hello world!</h1>
+<svelte:head>
+  <meta name="version" comment="__version__" />
+</svelte:head>
 
-  <Counter />
+<div class="dark:(text-gray-100 bg-gray-900)" bind:clientHeight={bodyH}>
+  <div
+    class="container flex flex-col justify-center min-h-screen px-4 mx-auto lg:px-8"
+  >
+    <div class="flex flex-col">
+      <Navigation />
+      <Header {bodyH} />
+    </div>
 
-  <p>
-    Visit <a href="https://svelte.dev">svelte.dev</a> to learn how to build Svelte
-    apps.
-  </p>
-</main>
+    <main id="main" />
 
-<style>
-  main {
-    text-align: center;
-    padding: 1em;
-    margin: 0 auto;
-  }
-
-  h1 {
-    color: #ff3e00;
-    text-transform: uppercase;
-    font-size: 4rem;
-    font-weight: 100;
-    line-height: 1.1;
-    margin: 4rem auto;
-    max-width: 14rem;
-  }
-
-  p {
-    max-width: 14rem;
-    margin: 2rem auto;
-    line-height: 1.35;
-  }
-
-  @media (min-width: 480px) {
-    h1 {
-      max-width: none;
-    }
-
-    p {
-      max-width: none;
-    }
-  }
-</style>
+    <Footer />
+  </div>
+</div>
