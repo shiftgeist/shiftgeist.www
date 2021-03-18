@@ -33,11 +33,13 @@
       rel="noopener noreferrer"
       style="filter: grayscale({tools[i].hover ? 0 : 90}%)"
       target="_blank"
-      title={slug + ' ' + name}>
+      title={slug + " " + name}
+    >
       <img
         alt={name}
         class="object-contain object-center lazyload"
-        data-src="assets/tools/{name}.svg" />
+        data-src="assets/tools/{name}.svg"
+      />
     </a>
   {/each}
 </div>

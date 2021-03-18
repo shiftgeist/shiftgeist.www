@@ -12,5 +12,9 @@ export default {
   ssr: {
     noExternal: Object.keys(pkg.dependencies || {}),
   },
-  plugins: [WindiCSS()],
+  plugins: [
+    WindiCSS.default({
+      config: "windi.config.cjs",
+    }),
+  ],
 };
