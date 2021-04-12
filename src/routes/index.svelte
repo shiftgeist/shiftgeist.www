@@ -1,26 +1,47 @@
-<script>
-  import Navigation from "../lib/Navigation.svelte";
-  import Footer from "../lib/Footer.svelte";
-  import Header from "../lib/Header.svelte";
+<script lang="ts">
+  import { _ } from 'svelte-i18n';
 
-  let bodyH;
+  let emoji = true;
+
+  function toggleEmoji(event: Event | KeyboardEvent) {
+    if (event instanceof KeyboardEvent && event.key !== 'Enter') {
+      return;
+    }
+
+    emoji = !emoji;
+  }
 </script>
 
 <svelte:head>
-  <meta name="version" comment="__version__" />
+  <title>Welcome</title>
 </svelte:head>
 
-<div class="dark:(text-gray-100 bg-gray-900)" bind:clientHeight={bodyH}>
-  <div
-    class="container flex flex-col justify-center min-h-screen px-4 mx-auto lg:px-8"
+<main>
+  <h1>{@html $_('page.home.title')}</h1>
+
+  <h2
+    class="emojiwhat link"
+    title={$_('action.clickme')}
+    tabindex="0"
+    on:click={toggleEmoji}
+    on:keydown={toggleEmoji}
   >
-    <div class="flex flex-col">
-      <Navigation />
-      <Header {bodyH} />
-    </div>
+    {#if emoji}
+      {$_('page.home.intro-emoji')}
+    {:else}
+      {$_('page.home.intro')}
+    {/if}
+  </h2>
+</main>
 
-    <main id="main" />
+<style>
+  main {
+    text-align: center;
+    margin: 0 auto;
+  }
 
-    <Footer />
-  </div>
-</div>
+  .emojiwhat {
+    cursor: help;
+    width: 100%;
+  }
+</style>
