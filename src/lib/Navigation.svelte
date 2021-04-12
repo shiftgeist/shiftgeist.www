@@ -20,7 +20,7 @@
 
   <div class="nav-list">
     {#each Object.keys(links) as name}
-      <a href={links[name]}>{name}</a>
+      <a href={links[name]} rel="noopener noreferrer" target="_blank">{name}</a>
     {/each}
 
     <select bind:value={$locale}>
