@@ -1,0 +1,12 @@
+{
+  "page": {
+    "home": {
+      "title": "Hi, I'm <s>Felix</s> shiftgeist",
+      "intro": "breaking the barrier between design and code",
+      "intro-emoji": "🔨 the 🚧 between 🎨 and ⌨️"
+    }
+  },
+  "action": {
+    "clickme": "click me"
+  }
+}
