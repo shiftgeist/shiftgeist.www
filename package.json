@@ -30,7 +30,7 @@
   "type": "module",
   "engines": {
     "node": ">= 12.17.0",
-    "pnpm": "^5.18.8"
+    "pnpm": "^6.0.0"
   },
   "browserslist": [
     "> 1%",
