@@ -2,7 +2,7 @@
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
     'Open Sans', 'Helvetica Neue', sans-serif;
 
-  --bg-color: #fff;
+  --bg-color: #f6f7f8;
   --text-color: #000;
   --highlight: #ff506d;
   --highlight-rgb: 255, 80, 109;
@@ -10,7 +10,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --bg-color: #000;
+    --bg-color: #121212;
     --text-color: #fff;
     --highlight: rgb(25, 249, 216);
     --highlight-rgb: 25, 249, 216;
@@ -102,7 +102,7 @@ article {
 
 select {
   color: var(--text-color);
-  background-color: var(--bg-color);
+  background-color: transparent;
   border: none;
   font-size: 1em;
   appearance: none;
