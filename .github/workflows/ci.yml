@@ -13,7 +13,7 @@ jobs:
         with:
           node-version: 14
       - name: Install pnpm
-        run: npm i -g pnpm
+        run: npm i -g pnpm@5
       - name: Install project
         run: pnpm i
       - name: Build
