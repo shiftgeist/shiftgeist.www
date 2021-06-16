@@ -1,0 +1,150 @@
+:root {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
+    'Open Sans', 'Helvetica Neue', sans-serif;
+
+  --font-small: 0.6em;
+  --font-large: 1.3em;
+}
+
+:root,
+body.light {
+  --bg-color: #f6f7f8;
+  --text-color: #000;
+  --highlight: #ff506d;
+  --highlight-rgb: 255, 80, 109;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg-color: #121212;
+    --text-color: #fff;
+    --highlight: #19f9d8;
+    --highlight-rgb: 25, 249, 216;
+  }
+}
+
+body.dark {
+  --bg-color: #121212;
+  --text-color: #fff;
+  --highlight: #19f9d8;
+  --highlight-rgb: 25, 249, 216;
+}
+
+body {
+  margin: 0;
+  background-color: var(--bg-color);
+  color: var(--text-color);
+  font-size: clamp(0.8rem, 2.5vw, 1.5rem);
+}
+
+nav,
+footer,
+main {
+  padding: 1rem 1.618rem;
+}
+
+h1,
+h2 {
+  line-height: 1.1;
+}
+
+h1 {
+  font-weight: 200;
+  color: var(--highlight);
+  font-size: 4em;
+  margin: 4rem auto;
+}
+
+h2 {
+  font-weight: 300;
+  font-size: 2.5em;
+  margin: 3rem auto;
+}
+
+p {
+  margin: 2rem auto;
+  line-height: 1.35;
+}
+
+a {
+  color: var(--text-color);
+}
+
+a:hover,
+.link:hover {
+  text-decoration-color: var(--highlight);
+}
+
+a:focus,
+.link:focus,
+select:focus {
+  outline: 2px solid var(--text-color);
+  outline-offset: 5px;
+}
+
+button {
+  --text-color: var(--highlight);
+
+  font-family: inherit;
+  font-size: inherit;
+  padding: 1em 2em;
+  color: var(--text-color);
+  background-color: rgba(var(--highlight-rgb), 0.1);
+  border-radius: 2em;
+  border: 3px solid rgba(var(--highlight-rgb), 0.1);
+  font-variant-numeric: tabular-nums;
+}
+
+button:hover {
+  border: 3px solid rgba(var(--highlight-rgb), 0.3);
+}
+
+button:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px var(--text-color);
+}
+
+button:active {
+  background-color: rgba(var(--highlight-rgb), 0.2);
+}
+
+article {
+  max-width: 14rem;
+}
+
+@media (min-width: 480px) {
+  article {
+    max-width: none;
+  }
+}
+
+select {
+  color: var(--text-color);
+  background-color: transparent;
+  border: none;
+  font-size: 1em;
+  appearance: none;
+  box-shadow: none;
+}
+
+select::after {
+  content: '\25BC';
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 0 1em;
+  background: #34495e;
+  cursor: pointer;
+  pointer-events: none;
+  transition: 0.25s all ease;
+}
+
+::-moz-focus-inner {
+  border: 0;
+}
+
+#svelte {
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+}

@@ -1,0 +1,12 @@
+{
+  "name": "@shiftgeist/colors",
+  "version": "1.0.0",
+  "description": "Colors for @shiftgeist",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "shiftgeist",
+  "license": "Apache-2.0"
+}
