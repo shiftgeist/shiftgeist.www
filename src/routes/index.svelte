@@ -1,6 +1,8 @@
 <script lang="ts">
   import { _ } from 'svelte-i18n';
 
+  export const prerender = true;
+
   let emoji = true;
 
   function toggleEmoji(event: Event | KeyboardEvent) {
