@@ -3,10 +3,12 @@
 
   import Logo from './Logo.svelte';
 
+  const username = 'shiftgeist';
+
   // Direction matters
   const links = {
-    Twitter: 'https://twitter.com/shiftgeis',
-    Github: 'https://github.com/shiftgeist'
+    Twitter: `https://twitter.com/${username}`,
+    Github: `https://github.com/${username}`
   };
 
   const langMap = {

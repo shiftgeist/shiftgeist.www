@@ -16,25 +16,53 @@
         '<svg focusable="false" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" fill="currentColor" width="32" height="32" viewBox="0 0 32 32" aria-hidden="true" data-darkreader-inline-fill="" style="--darkreader-inline-fill:currentColor;"><path d="M19,24H4L3.9966,8.9062l11.4341,7.9161a1.0008,1.0008,0,0,0,1.1386,0L28,8.9087,28,18h2V8a2.0027,2.0027,0,0,0-2-2H4A2.0023,2.0023,0,0,0,2,8V24a2.0027,2.0027,0,0,0,2,2H19ZM25.7986,8,16,14.7837,6.2014,8Z"></path><circle cx="26" cy="24" r="4"></circle><title>Email new</title></svg>'
     }
   ];
+
+  let theme = '';
+  const themes = ['auto', 'dark', 'light'];
+
+  function handleThemeSelect() {
+    document.body.classList.add(theme);
+    themes.filter((t) => t !== theme).forEach((c) => document.body.classList.remove(c));
+  }
 </script>
 
 <footer>
-  {#each icons as { link, icon }, i}
-    <a href={link} rel="noopener noreferrer" target="_blank">
-      {@html icon}
-    </a>
-  {/each}
+  <div class="links">
+    {#each icons as { link, icon }, i}
+      <a href={link} rel="noopener noreferrer" target="_blank">
+        {@html icon}
+      </a>
+    {/each}
+  </div>
+
+  {#if themes}
+    <!-- svelte-ignore a11y-no-onchange (otherwise theme switches on blur) -->
+    <select class="theme-selector" bind:value={theme} on:change={handleThemeSelect}>
+      {#each themes as theme}
+        <option value={theme}>{theme}</option>
+      {/each}
+    </select>
+  {/if}
 </footer>
 
 <style>
   footer {
+    text-align: center;
+  }
+
+  .links {
     display: flex;
     justify-content: center;
     gap: 1rem;
   }
 
-  footer > * {
+  .links > * {
     display: flex;
     align-items: center;
+  }
+
+  .theme-selector {
+    margin-top: 1em;
+    font-size: var(--font-small);
   }
 </style>

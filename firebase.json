@@ -1,0 +1,24 @@
+{
+  "hosting": {
+    "public": "myApp",
+    "rewrites": [
+      {
+        "source": "**",
+        "function": "ssrServer"
+      }
+    ],
+    "predeploy": ["npm run build"]
+  },
+  "functions": {
+    "source": "functions"
+  },
+  "firestore": {
+    "rules": "firestore.rules",
+    "indexes": "firestore.indexes.json"
+  },
+  "emulators": {
+    "firestore": {
+      "port": "8080"
+    }
+  }
+}
