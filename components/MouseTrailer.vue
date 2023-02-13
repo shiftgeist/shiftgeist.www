@@ -1,38 +1,51 @@
 <script setup lang="ts">
-const trailer = ref(),
-  trailerType = ref<string>('link')
+type TrailerType = 'menu' | 'image' | 'link'
 
-const dataTypeIconMap = {
+const trailer = ref<HTMLElement>()
+const trailerType = ref<TrailerType>('link')
+
+const dataTypeIconMap: { [key in TrailerType]: string } = {
   link: 'mdi:external-link',
   image: 'mdi:image',
   menu: 'mdi:menu',
 }
 
-function animateTrailer(e: MouseEvent, scale: boolean) {
-  const x = e.clientX - trailer.value.offsetWidth / 2 // 10 // from w-5 h-5
-  const y = e.clientY - trailer.value.offsetHeight / 2 // 10 // from w-5 h-5
-
-  const keyframes = {
-    transform: `translate(${x}px, ${y}px) scale(${scale ? 6 : 1})`,
-  }
-
-  trailer.value.animate(keyframes, { duration: 800, fill: 'forwards' })
+const dataTypeSizeMap: { [key in TrailerType]: number } = {
+  link: 6,
+  image: 6,
+  menu: 4,
 }
 
-useEventListener('mousemove', e => {
+function animateTrailer(event: MouseEvent, scale: boolean) {
   if (!trailer.value) return
 
-  const interactive = (e.target as Element).closest('.trailer-interact'),
+  const x = event.clientX - trailer.value.offsetWidth / 2 // 10 // from w-5 h-5
+  const y = event.clientY - trailer.value.offsetHeight / 2 // 10 // from w-5 h-5
+
+  trailer.value.animate(
+    {
+      transform: `translate(${x}px, ${y}px) scale(${
+        scale ? dataTypeSizeMap[trailerType.value] : 1
+      })`,
+    },
+    { duration: 800, fill: 'forwards' }
+  )
+}
+
+useEventListener('mousemove', event => {
+  if (!trailer.value) return
+
+  const interactive = (event.target as HTMLElement).closest(
+      '.trailer-interact'
+    ) as HTMLElement,
     interacting = interactive !== null
 
-  animateTrailer(e, interacting)
+  animateTrailer(event, interacting)
 
-  trailer.value.dataset.type = interacting
-    ? (interactive as HTMLElement).dataset.type
-    : ''
+  trailer.value.dataset.type = interacting ? interactive.dataset.type : ''
 
   if (interacting) {
-    trailerType.value = (interactive as HTMLElement).dataset.type as string
+    trailerType.value = interactive.dataset.type as TrailerType
   }
 })
 </script>
